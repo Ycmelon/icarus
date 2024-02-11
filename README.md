@@ -2,7 +2,7 @@
 
 LLM-based conversational Telegram bot aiming to mimic human texting behaviour
 
-(demo video)
+https://github.com/Ycmelon/icarus/assets/16069727/9886ceca-6a7a-4203-bfcc-54d4fdd9f26f
 
 ## Cool things
 
