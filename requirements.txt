@@ -1,0 +1,3 @@
+nlpcloud==1.1.45
+python-dotenv
+telethon==1.32.1
