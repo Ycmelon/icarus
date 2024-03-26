@@ -41,6 +41,9 @@ CONVERSATION_TEMPLATE = [  # template to dictate conversation tone (TODO)
 ]
 USER_NAME = os.environ.get("USER_NAME", "Matt")  # user and bot name
 BOT_NAME = os.environ.get("BOT_NAME", "Icarus")  # mostly for summary use
+ADMIN_ID = int(
+    os.environ.get("ADMIN_ID", 0)
+)  # whitelist: bot is only accessible to admin (temporarily)
 
 # state
 current_message_ids = {}
@@ -193,7 +196,7 @@ async def user_update(event):
     cancel_tasks[event.chat_id] = asyncio.create_task(stop_typing(event.chat_id))
 
 
-@client.on(events.NewMessage(pattern="\\/clear_history"))
+@client.on(events.NewMessage(pattern="\\/clear_history", from_users=ADMIN_ID))
 async def on_clear_history(event):  # TODO
     global wait_tasks  # cancel any pending messages
     if event.chat_id in wait_tasks and wait_tasks[event.chat_id]:
@@ -217,7 +220,7 @@ async def on_clear_history(event):  # TODO
     raise events.StopPropagation
 
 
-@client.on(events.NewMessage(pattern="\\/update_history"))
+@client.on(events.NewMessage(pattern="\\/update_history", from_users=ADMIN_ID))
 async def on_update_history(event):
     # TODO: consider context of this function call:
     # are there pending messages from user?
@@ -251,7 +254,7 @@ async def on_update_history(event):
     raise events.StopPropagation
 
 
-@client.on(events.NewMessage(incoming=True))
+@client.on(events.NewMessage(incoming=True, from_users=ADMIN_ID))
 async def new_message(event):
     """
     handle new tg message
