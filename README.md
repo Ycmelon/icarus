@@ -2,8 +2,6 @@
 
 LLM-based conversational Telegram bot aiming to mimic human texting behaviour
 
-[Medium article](https://medium.com/@pen3599/writing-a-llm-based-telegram-bot-that-texts-like-a-person-would-944853849075)
-
 https://github.com/Ycmelon/icarus/assets/16069727/9886ceca-6a7a-4203-bfcc-54d4fdd9f26f
 
 ## Cool things
